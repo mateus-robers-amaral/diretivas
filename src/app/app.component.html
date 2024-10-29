@@ -1,0 +1,43 @@
+<div class="container">
+
+  <!-- diretiva usada: @if -->
+  <button (click)="tornarTextoVisivel()">
+    {{ mostrarTexto ? 'Clique para esconder o texto' : 'Clique para tornar o texto visível' }}
+  </button>
+  @if(mostrarTexto) {
+    <p>
+      O texto está visível. Clique novamente para esconder.
+    </p>
+  }
+
+  <!-- diretiva usada: @for -->
+  <h2>Lista de Alunos</h2>
+  <ul>
+    @for(aluno of alunos; track alunos) {
+      <li>
+        {{ aluno.nome }} - {{ aluno.idade }} anos
+      </li>
+    }
+  </ul>
+
+  <!-- diretiva usada: ngSwitch -->
+  <h2>Escolha uma Cor</h2>
+  <select [(ngModel)]="cor">
+    <option value="">Selecione uma cor</option>
+    <option value="vermelho">Vermelho</option>
+    <option value="azul">Azul</option>
+  </select>
+
+  <div [ngSwitch]="cor" class="cor-container">
+    <p *ngSwitchCase="'vermelho'" class="vermelho">A cor selecionada é Vermelho</p>
+    <p *ngSwitchCase="'azul'" class="azul">A cor selecionada é Azul</p>
+    <p *ngSwitchDefault class="nao-especificada">Cor não especificada</p>
+  </div>
+</div>
+
+
+<!-- <div [ngSwitch]="cor">
+    <p *ngSwitchCase="'vermelho'">Cor vermelho</p>
+    <p *ngSwitchCase="'azul'">Cor azul</p>
+    <p *ngSwitchDefault>Cor não especificada</p>
+</div> -->
